@@ -4,8 +4,12 @@
 
 
 p {
-    color: aquamarine;
+    color: blue;
     font-family: 'Times New Roman', Times, serif;    
+}
+
+#apresenta{
+    color:aquamarine
 }
 
 #paragrafo1{
