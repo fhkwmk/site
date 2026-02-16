@@ -1,46 +1,126 @@
+/* Reset básico e Box Model */
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Garante que padding não aumente o tamanho do elemento */
 }
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a0033; /* Fundo roxo escuro como no template */
+    color: #333;
+    padding: 20px;
+}
 
-p {
+/* Estrutura Grid Principal */
+.grid-container {
+    display: grid;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 10px; /* Espaço entre os blocos */
+    grid-template-areas: 
+        "header header header"
+        "nav nav nav"
+        "sidebar-l content sidebar-r"
+        "footer footer footer";
+    grid-template-columns: 200px 1fr 250px;
+}
+
+/* Estilização Geral dos Blocos */
+.header, .nav, .sidebar-left, .content, .sidebar-right, .footer {
+    background-color: #e9ecef;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+/* Áreas do Grid */
+.header { grid-area: header; background-color: #40e0d0; text-align: center; }
+.nav { grid-area: nav; background-color: #ced4da; }
+.sidebar-left { grid-area: sidebar-l; }
+.content { grid-area: content; min-height: 400px; }
+.sidebar-right { grid-area: sidebar-r; }
+.footer { grid-area: footer; text-align: center; }
+
+/* Flexbox no Menu */
+.nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav a {
+    text-decoration: none;
     color: blue;
-    font-family: 'Times New Roman', Times, serif;    
-}
-
-#apresenta{
-    color:aquamarine
-}
-
-#paragrafo1{
-   color: red; 
-   font-size: x-large;   
-}
-
-.negrito {
     font-weight: bold;
-    font-size: 24px;
 }
 
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;  
+/* Estilo do Conteúdo (Flexbox para alinhar foto e texto) */
+.profile-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d35400; /* Laranja da sua imagem */
+    padding: 20px;
+    color: white;
+    margin: 15px 0;
 }
 
-th {
-    background-color: #f2f2f2; /* Cinza claro */
-    text-align: center;        /* Alinha o texto ao centro */
-    padding: 10px;             /* Opcional: dá um respiro interno para o texto */
+.profile-img {
+    width: 150px;
+    border: 3px solid #fff;
+    margin-bottom: 10px;
 }
 
-header{
-    margin: 10px;
-    padding: 10px;
-    background-color: aquamarine;    
+.highlight {
+    font-weight: bold;
+    color: #40e0d0;
+    font-size: 1.2rem;
 }
 
-#sobre{
-    margin: 10px;
-    padding: 10px;
-    background-color: chocolate;
+/* Tabela */
+.tech-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tech-table th, .tech-table td {
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: left;
+}
+
+.tech-table th { background-color: #eee; }
+
+/* Formulário (Box Model e Flex) */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+input, select, textarea {
+    padding: 5px;
+    border: 1px solid #999;
+}
+
+button {
+    margin-top: 10px;
+    cursor: pointer;
+    padding: 8px;
+}
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-areas: 
+            "header"
+            "nav"
+            "content"
+            "sidebar-l"
+            "sidebar-r"
+            "footer";
+        grid-template-columns: 1fr;
+    }
 }
