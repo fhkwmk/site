@@ -1,26 +1,46 @@
-// Espera o DOM carregar completamente
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Seleciona o item da lista pelo ID que criamos
+    // 1. Efeito na habilidade JavaScript
     const jsItem = document.getElementById('js-skill');
-
-    // Adiciona o evento de clique
     jsItem.addEventListener('click', () => {
-        
-        // 1. Efeito visual: Faz o texto crescer e girar
-        jsItem.style.color = '#f7df1e'; // Cor oficial do JS
-        jsItem.style.fontWeight = 'bold';
+        jsItem.style.color = '#f7df1e';
         jsItem.style.transform = 'scale(1.5) rotate(360deg)';
-        jsItem.style.textShadow = '2px 2px 10px rgba(0,0,0,0.5)';
-
-        // 2. Mensagem lúdica
+        
         setTimeout(() => {
             alert("🚀 POW! Você acaba de ativar o poder do JavaScript no seu navegador!");
-            
-            // 3. Reseta o estilo após o alerta para poder clicar de novo
             jsItem.style.transform = 'scale(1) rotate(0deg)';
             jsItem.style.color = ''; 
-            jsItem.style.textShadow = 'none';
-        }, 500); // Aguarda meio segundo para o giro completar antes do alerta
+        }, 500);
     });
+
+    // 2. Efeito de Confetes no Título (Easter Egg)
+    const headerTitle = document.querySelector('.header h1');
+    headerTitle.style.cursor = 'pointer';
+
+    headerTitle.addEventListener('click', () => {
+        const cores = ['#40e0d0', '#d35400', '#f7df1e', '#ffffff', '#1a0033'];
+        for (let i = 0; i < 50; i++) {
+            criarConfete(cores);
+        }
+    });
+
+    function criarConfete(cores) {
+        const confete = document.createElement('div');
+        confete.style.position = 'fixed';
+        confete.style.zIndex = '9999';
+        confete.style.width = Math.random() * 10 + 5 + 'px';
+        confete.style.height = confete.style.width;
+        confete.style.backgroundColor = cores[Math.floor(Math.random() * cores.length)];
+        confete.style.left = Math.random() * 100 + 'vw';
+        confete.style.top = '-10px';
+        confete.style.borderRadius = '50%';
+        document.body.appendChild(confete);
+
+        const animacao = confete.animate([
+            { transform: 'translateY(0) rotate(0)', opacity: 1 },
+            { transform: `translateY(100vh) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+        ], { duration: 3000, easing: 'ease-out' });
+
+        animacao.onfinish = () => confete.remove();
+    }
 });

@@ -2,25 +2,22 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Garante que padding não aumente o tamanho do elemento */
+    box-sizing: border-box;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #1a0033; /* Fundo roxo escuro como no template */
+    background-color: #1a0033;
     color: #333;
     padding: 20px;
 }
 
 /* Estrutura Grid Principal */
-
 .grid-container {
     display: grid;
     max-width: 1200px;
     margin: 0 auto;
-    
-    gap: 10px; /* Espaço entre os blocos */
-    
+    gap: 10px;
     grid-template-areas: 
         "header header header"
         "nav nav nav"
@@ -28,7 +25,6 @@ body {
         "footer footer footer";
     grid-template-columns: 200px 1fr 250px;
 }
-
 
 /* Estilização Geral dos Blocos */
 .header, .nav, .sidebar-left, .content, .sidebar-right, .footer {
@@ -45,7 +41,7 @@ body {
 .sidebar-right { grid-area: sidebar-r; }
 .footer { grid-area: footer; text-align: center; }
 
-/* Flexbox no Menu */
+/* Menu */
 .nav ul {
     display: flex;
     list-style: none;
@@ -59,12 +55,12 @@ body {
     font-weight: bold;
 }
 
-/* Estilo do Conteúdo (Flexbox para alinhar foto e texto) */
+/* Perfil */
 .profile-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #d35400; /* Laranja da sua imagem */
+    background-color: #d35400;
     padding: 40px;
     color: white;
     margin: 15px 0;
@@ -82,6 +78,33 @@ body {
     font-size: 1.2rem;
 }
 
+/* Alinhamento Sidebar */
+.sidebar-left ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.sidebar-left li {
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-left li::before {
+    content: "•";
+    color: #d35400;
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+}
+
+.sidebar-left h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: #1a0033;
+}
+
 /* Tabela */
 .tech-table {
     width: 100%;
@@ -97,7 +120,7 @@ body {
 
 .tech-table th { background-color: #eee; }
 
-/* Formulário (Box Model e Flex) */
+/* Formulário */
 .form-group {
     display: flex;
     flex-direction: column;
@@ -115,7 +138,7 @@ button {
     padding: 8px;
 }
 
-/* Responsividade Básica */
+/* Responsividade */
 @media (max-width: 768px) {
     .grid-container {
         grid-template-areas: 
@@ -128,39 +151,3 @@ button {
         grid-template-columns: 1fr;
     }
 }
-
-/* Espaçamento extra para as listas da sidebar */
-.sidebar-left ul {
-    list-style-position: inside;
-    margin-bottom: 10px;
-}
-
-.sidebar-left h3 {
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-    color: #1a0033;
-}
-
-/* Alinhamento preciso das listas na sidebar */
-.sidebar-left ul {
-    list-style-type: none; /* Remove as bolinhas padrão para controle total */
-    padding-left: 0;       /* Remove o recuo da esquerda */
-    margin-top: 10px;
-}
-
-.sidebar-left li {
-    padding: 5px 0;
-    display: flex;
-    align-items: center;
-}
-
-/* Adiciona um marcador personalizado (opcional, para ficar bonito) */
-.sidebar-left li::before {
-    content: "•";
-    color: #d35400; /* Laranja para combinar com o seu tema */
-    font-weight: bold;
-    display: inline-block; 
-    width: 1em;
-    margin-left: 0;
-}
-
