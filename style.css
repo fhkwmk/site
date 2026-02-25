@@ -128,3 +128,38 @@ button {
         grid-template-columns: 1fr;
     }
 }
+
+/* Espaçamento extra para as listas da sidebar */
+.sidebar-left ul {
+    list-style-position: inside;
+    margin-bottom: 10px;
+}
+
+.sidebar-left h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: #1a0033;
+}
+
+/* Alinhamento preciso das listas na sidebar */
+.sidebar-left ul {
+    list-style-type: none; /* Remove as bolinhas padrão para controle total */
+    padding-left: 0;       /* Remove o recuo da esquerda */
+    margin-top: 10px;
+}
+
+.sidebar-left li {
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Adiciona um marcador personalizado (opcional, para ficar bonito) */
+.sidebar-left li::before {
+    content: "•";
+    color: #d35400; /* Laranja para combinar com o seu tema */
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: 0;
+}
